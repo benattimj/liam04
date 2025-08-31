@@ -18,7 +18,7 @@ export default function Gallery() {
       <div className="mb-4 flex items-center justify-between gap-4">
         <div>
           <h2 className="text-lg font-semibold">Todas as fotos</h2>
-          <p className="text-sm text-zinc-600">Estilo galeria do iPhone/Samsung com layout tipo masonry.</p>
+          <p className="text-sm text-zinc-600">Estilo galeria Aniversário de Liam 1 ano!</p>
         </div>
         <a
           className="rounded-xl border px-3 py-1.5 text-sm hover:bg-zinc-100"
