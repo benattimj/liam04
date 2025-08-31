@@ -49,7 +49,7 @@ export default function App() {
 
       <footer className="mx-auto max-w-6xl px-4 pb-10 pt-2 text-sm text-zinc-500">
         Feito com ❤️ em React + Tailwind por Mbj.
-        Com carinho para Mariana!
+        Com carinho para Mariana! Amo
       </footer>
     </div>
   )
