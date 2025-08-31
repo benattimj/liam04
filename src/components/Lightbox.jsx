@@ -14,53 +14,59 @@ export default function Lightbox({ open, onClose, src, onPrev, onNext, index, to
 
   if (!open) return null
 
-return (
-  <div className="fixed inset-0 z-50 bg-black/90 text-white">
-    {/* Botão fechar com z-index garantido */}
-    <button
-      className="absolute top-4 right-4 z-50 rounded-full bg-white/10 px-3 py-1.5 hover:bg-white/20"
-      onClick={onClose}
-      aria-label="Fechar"
-      title="Fechar"
-    >
-      ✕
-    </button>
+  return (
+    <div className="fixed inset-0 z-50 bg-black/90 text-white flex items-center justify-center">
+      {/* Botão fechar */}
+      <button
+        className="absolute top-4 right-4 z-50 rounded-full bg-white/10 px-3 py-1.5 hover:bg-white/20"
+        onClick={onClose}
+        aria-label="Fechar"
+        title="Fechar"
+      >
+        ✕
+      </button>
 
-    {/* Contador de fotos */}
-    <div className="absolute top-4 left-4 text-sm opacity-80 z-50">
-      {index + 1} / {total}
-    </div>
+      {/* Contador */}
+      <div className="absolute top-4 left-4 text-sm opacity-80 z-50">
+        {index + 1} / {total}
+      </div>
 
-    {/* Container da imagem com pointer-events:none */}
-    <div className="h-full w-full grid place-items-center px-4 pointer-events-none">
-      <img
-        src={src}
-        alt="Foto"
-        className="max-h-[88vh] max-w-[96vw] object-contain rounded-xl shadow-2xl pointer-events-auto"
+      {/* Clique fora para fechar */}
+      <div
+        className="fixed inset-0 z-40"
+        onClick={onClose}
       />
-    </div>
 
-    {/* Botão anterior */}
-    <div className="absolute inset-y-0 left-0 w-20 grid place-items-center z-50">
-      <button
-        className="text-3xl opacity-70 hover:opacity-100"
-        onClick={onPrev}
-        aria-label="Anterior"
-      >
-        ‹
-      </button>
-    </div>
+      {/* Imagem */}
+      <div className="relative z-50 max-h-[90vh] max-w-[95vw]">
+        <img
+          src={src}
+          alt={`Foto ${index + 1}`}
+          className="max-h-[90vh] max-w-[95vw] object-contain rounded-xl shadow-2xl"
+        />
+      </div>
 
-    {/* Botão próxima */}
-    <div className="absolute inset-y-0 right-0 w-20 grid place-items-center z-50">
-      <button
-        className="text-3xl opacity-70 hover:opacity-100"
-        onClick={onNext}
-        aria-label="Próxima"
-      >
-        ›
-      </button>
+      {/* Botão anterior */}
+      <div className="absolute inset-y-0 left-0 w-20 flex items-center justify-center z-50">
+        <button
+          className="text-3xl opacity-70 hover:opacity-100"
+          onClick={(e) => { e.stopPropagation(); onPrev() }}
+          aria-label="Anterior"
+        >
+          ‹
+        </button>
+      </div>
+
+      {/* Botão próxima */}
+      <div className="absolute inset-y-0 right-0 w-20 flex items-center justify-center z-50">
+        <button
+          className="text-3xl opacity-70 hover:opacity-100"
+          onClick={(e) => { e.stopPropagation(); onNext() }}
+          aria-label="Próxima"
+        >
+          ›
+        </button>
+      </div>
     </div>
-  </div>
-)
+  )
 }
